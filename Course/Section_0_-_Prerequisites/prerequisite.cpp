@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 #include <string>
 
 template <typename T>
@@ -16,33 +17,30 @@ public:
   Base() = default;
   virtual ~Base() = default;
 
-  virtual void foo()
-  {
-    std::cout << "Hello from base!\n";
-  };
+  virtual void foo() = 0;
 };
 
-class Derived_A
+class Derived_A final : public Base
 {
 public:
 
   Derived_A() = default;
-  virtual ~Derived_A() = default;
+  ~Derived_A() final = default;
 
-  virtual void foo()
+  void foo() final
   {
     std::cout << "Hello from derived A!\n";
   };
 };
 
-class Derived_B
+class Derived_B final : public Base
 {
 public:
 
   Derived_B() = default;
-  virtual ~Derived_B() = default;
+  ~Derived_B() final = default;
 
-  virtual void foo()
+  void foo() final
   {
     std::cout << "Hello from derived B!\n";
   };
@@ -57,4 +55,10 @@ int main()
   using namespace std::literals;
   std::cout << "Adding \"Hello \" and \"World \": "
             << add<std::string>("Hello ", "World") << '\n';
+
+  std::unique_ptr<Base> A {new Derived_A};
+  std::unique_ptr<Base> B {new Derived_B};
+
+  A->foo();
+  B->foo();
 }
