@@ -56,5 +56,5 @@ int main()
 
   using namespace std::literals;
   std::cout << "Adding \"Hello \" and \"World \": "
-            << add<std::string>("Hello", "World") << '\n';
+            << add<std::string>("Hello ", "World") << '\n';
 }
