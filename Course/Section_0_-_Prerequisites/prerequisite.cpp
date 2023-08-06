@@ -54,7 +54,7 @@ int main()
 
   using namespace std::literals;
   std::cout << "Adding \"Hello \" and \"World \": "
-            << add<std::string>("Hello ", "World") << '\n';
+            << add<std::string>("Hello ", "World") << "\n\n\n";
 
   std::unique_ptr<Base> A {new Derived_A};
   std::unique_ptr<Base> B {new Derived_B};
