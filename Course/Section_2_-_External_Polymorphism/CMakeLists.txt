@@ -1,2 +1,2 @@
-add_executable(external_polymorphism external_polymorphism.cpp)
-output_here(external_polymorphism)
+add_subdirectory(Subsection_1_-_Basics)
+add_subdirectory(Subsection_2_-_More_Complex)
