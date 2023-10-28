@@ -8,7 +8,7 @@ All of these animal types can have an `void speak()` member function, where each
 
 A major downside of this approach is that `Cat`, `Dog`, and `Horse` must actually inherit from `Animal` for this to work.
 Suppose someone else wrote a `Sheep` class, and this `Sheep` has a `void speak()` member function.
-If this `Sheep` does not inherit from *our* `Animal` class, then we cannot refer to it through an `Animal*`.
+If this `Sheep` does not inherit from *our* `Animal` class, then we cannot refer to it through an `Animal*`, even though it implements the right interface!
 In order to use this `Sheep` class alongside our existing animals, we would have to modify the `Sheep` class to inherit from `Animal`.
 `Sheep` would have to have been designed to work with our `Animal` class hierarchy.
 This may be difficult if `Sheep` is from a third-party library; plus, nobody wants to break somebody else's code.
