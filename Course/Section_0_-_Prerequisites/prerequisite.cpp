@@ -52,7 +52,6 @@ int main()
 {
   std::cout << "Adding 1 and 8: " << add(1, 8) << '\n';
 
-  using namespace std::literals;
   std::cout << "Adding \"Hello \" and \"World \": "
             << add<std::string>("Hello ", "World") << "\n\n\n";
 
