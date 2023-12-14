@@ -118,6 +118,8 @@ public:
 
 // We can write an AnimalWrapper that can handle Horse, Sheep,
 // as well as whatever else implements the right interface!
+//
+// Not too bad, right?
 template <typename T>
 class Animal_Wrapper : public Animal
 {
