@@ -1,5 +1,4 @@
 #include <iostream>
-#include <memory>
 #include <string_view>
 #include <vector>
 
@@ -67,7 +66,10 @@ public:
   }
 };
 
-class Horse : public Animal
+// and here are our animals that doesn't inherit from `Animal`
+
+namespace lib {
+class Horse
 {
 
 public:
@@ -77,22 +79,19 @@ public:
   Horse(Horse&&) = default;
   Horse& operator=(const Horse&) = default;
   Horse& operator=(Horse&&) = default;
-  ~Horse() override = default;
+  ~Horse() = default;
 
-  void speak() const override
+  void speak() const
   {
     std::cout << "Neigh!\n";
   }
 
-  bool can_eat(std::string_view food) const override
+  bool can_eat(std::string_view food) const
   {
     return food == "hay";
   }
 };
 
-// and here is our Sheep that doesn't inherit from `Animal`
-
-namespace lib {
 class Sheep
 {
 
@@ -117,41 +116,37 @@ public:
 };
 }  // namespace lib
 
-// but we can make a Sheep_Wrapper that does!
-class Sheep_Wrapper : public Animal
+// We can write an AnimalWrapper that can handle Horse, Sheep,
+// as well as whatever else implements the right interface!
+template <typename T>
+class Animal_Wrapper : public Animal
 {
 private:
 
-  // we hold onto a real sheep
-  lib::Sheep wrapped_sheep;
+  T wrapped_animal;
 
 public:
 
-  Sheep_Wrapper() = default;
+  Animal_Wrapper() = default;
 
-  // we make a constructor that takes a sheep
-  explicit Sheep_Wrapper(lib::Sheep sheep)
-      : wrapped_sheep {sheep}  // in real code,
-  // you should move or forward in the sheep
-  // but this is just an introduction
+  explicit Animal_Wrapper(T animal)
+      : wrapped_animal {animal}
   { }
 
-  Sheep_Wrapper(const Sheep_Wrapper&) = delete;
-  Sheep_Wrapper(Sheep_Wrapper&&) = delete;
-  Sheep_Wrapper& operator=(const Sheep_Wrapper&) = delete;
-  Sheep_Wrapper& operator=(Sheep_Wrapper&&) = delete;
-  ~Sheep_Wrapper() override = default;
+  Animal_Wrapper(const Animal_Wrapper&) = delete;
+  Animal_Wrapper(Animal_Wrapper&&) = delete;
+  Animal_Wrapper& operator=(const Animal_Wrapper&) = delete;
+  Animal_Wrapper& operator=(Animal_Wrapper&&) = delete;
+  ~Animal_Wrapper() override = default;
 
-  // and we just implement the Animal interface by calling
-  // the member functions of the real Sheep!
   void speak() const override
   {
-    wrapped_sheep.speak();
+    wrapped_animal.speak();
   }
 
   bool can_eat(std::string_view food) const override
   {
-    return wrapped_sheep.can_eat(food);
+    return wrapped_animal.can_eat(food);
   }
 };
 
@@ -161,14 +156,10 @@ int main()
 
   myAnimals.emplace_back(new Cat {});
   myAnimals.emplace_back(new Dog {});
-  myAnimals.emplace_back(new Horse {});
 
-  // This would not work, because Sheep does not inherit from Animal
-  // myAnimals.emplace_back(new Sheep {});
-
-  // but this does work!
-  // Because Sheep_Wrapper does inherit from Animal!
-  myAnimals.emplace_back(new Sheep_Wrapper {});
+  // Huzzah! Our template works!
+  myAnimals.emplace_back(new Animal_Wrapper<lib::Horse> {});
+  myAnimals.emplace_back(new Animal_Wrapper<lib::Sheep> {});
 
   for ( Animal* animal : myAnimals ) {
     animal->speak();
