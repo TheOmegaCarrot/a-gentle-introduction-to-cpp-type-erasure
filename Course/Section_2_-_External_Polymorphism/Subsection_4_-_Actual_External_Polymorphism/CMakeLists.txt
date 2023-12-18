@@ -1,0 +1,2 @@
+add_executable(actual_external_polymorphism actual_external_polymorphism.cpp)
+output_here(actual_external_polymorphism)
