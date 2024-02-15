@@ -1,2 +1,2 @@
-add_executable(actual_external_polymorphism actual_external_polymorphism.cpp)
-output_here(actual_external_polymorphism)
+add_executable(templated_complete_polymorphism templated_complete_polymorphism.cpp)
+output_here(templated_complete_polymorphism)
