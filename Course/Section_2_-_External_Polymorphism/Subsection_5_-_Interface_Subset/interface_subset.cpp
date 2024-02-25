@@ -2,7 +2,7 @@
 #include <string_view>
 #include <vector>
 
-namespace lib {
+namespace zoo {
 class Cat
 {
 
@@ -151,7 +151,7 @@ public:
     return food == "grass";
   }
 };
-}  // namespace lib
+}  // namespace zoo
 
 // We can write the parent of our new inheritance tree!
 class Animal
@@ -210,10 +210,10 @@ int main()
 
   // All of these library types are doing polymorphism without them
   // inheriting from a common parent!
-  myAnimals.emplace_back(new Animal_Wrapper<lib::Cat> {});
-  myAnimals.emplace_back(new Animal_Wrapper<lib::Dog> {});
-  myAnimals.emplace_back(new Animal_Wrapper<lib::Horse> {});
-  myAnimals.emplace_back(new Animal_Wrapper<lib::Sheep> {});
+  myAnimals.emplace_back(new Animal_Wrapper<zoo::Cat> {});
+  myAnimals.emplace_back(new Animal_Wrapper<zoo::Dog> {});
+  myAnimals.emplace_back(new Animal_Wrapper<zoo::Horse> {});
+  myAnimals.emplace_back(new Animal_Wrapper<zoo::Sheep> {});
 
   for ( Animal* animal : myAnimals ) {
     animal->speak();

@@ -92,7 +92,7 @@ public:
 
 // and here is our Sheep that doesn't inherit from `Animal`
 
-namespace lib {
+namespace zoo {
 class Sheep
 {
 
@@ -115,7 +115,7 @@ public:
     return food == "grass";
   }
 };
-}  // namespace lib
+}  // namespace zoo
 
 // but we can make a Sheep_Wrapper that does!
 class Sheep_Wrapper : public Animal
@@ -123,14 +123,14 @@ class Sheep_Wrapper : public Animal
 private:
 
   // we hold onto a real sheep
-  lib::Sheep wrapped_sheep;
+  zoo::Sheep wrapped_sheep;
 
 public:
 
   Sheep_Wrapper() = default;
 
   // we make a constructor that takes a sheep
-  explicit Sheep_Wrapper(lib::Sheep sheep)
+  explicit Sheep_Wrapper(zoo::Sheep sheep)
       : wrapped_sheep {sheep}  // in real code,
   // you should move or forward in the sheep
   // but this is just an introduction

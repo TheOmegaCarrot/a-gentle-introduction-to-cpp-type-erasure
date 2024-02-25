@@ -68,7 +68,7 @@ public:
 
 // and here are our animals that doesn't inherit from `Animal`
 
-namespace lib {
+namespace zoo {
 class Horse
 {
 
@@ -114,7 +114,7 @@ public:
     return food == "grass";
   }
 };
-}  // namespace lib
+}  // namespace zoo
 
 // We can write an AnimalWrapper that can handle Horse, Sheep,
 // as well as whatever else implements the right interface!
@@ -160,8 +160,8 @@ int main()
   myAnimals.emplace_back(new Dog {});
 
   // Huzzah! Our template works!
-  myAnimals.emplace_back(new Animal_Wrapper<lib::Horse> {});
-  myAnimals.emplace_back(new Animal_Wrapper<lib::Sheep> {});
+  myAnimals.emplace_back(new Animal_Wrapper<zoo::Horse> {});
+  myAnimals.emplace_back(new Animal_Wrapper<zoo::Sheep> {});
 
   for ( Animal* animal : myAnimals ) {
     animal->speak();
