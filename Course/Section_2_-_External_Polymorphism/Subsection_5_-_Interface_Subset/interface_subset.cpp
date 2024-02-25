@@ -20,6 +20,11 @@ public:
     std::cout << "Meow!\n";
   }
 
+  void meow() const
+  {
+    std::cout << "Meow!\n";
+  }
+
   bool can_eat(std::string_view food) const
   {
     return food == "cat food";
@@ -43,6 +48,11 @@ public:
     std::cout << "Woof!\n";
   }
 
+  void bark() const
+  {
+    std::cout << "Woof!\n";
+  }
+
   bool can_eat(std::string_view food) const
   {
     return food == "dog food";
@@ -51,6 +61,8 @@ public:
 
 class Horse
 {
+
+  bool m_is_being_ridden = false;
 
 public:
 
@@ -66,6 +78,33 @@ public:
     std::cout << "Neigh!\n";
   }
 
+  // return success/error
+  bool ride()
+  {
+    if ( ! m_is_being_ridden ) {
+      m_is_being_ridden = true;
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  // return success/error
+  bool stop_riding()
+  {
+    if ( m_is_being_ridden ) {
+      m_is_being_ridden = false;
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  bool is_being_ridden() const
+  {
+    return m_is_being_ridden;
+  }
+
   bool can_eat(std::string_view food) const
   {
     return food == "hay";
@@ -74,6 +113,8 @@ public:
 
 class Sheep
 {
+
+  bool m_is_woolly = true;
 
 public:
 
@@ -87,6 +128,22 @@ public:
   void speak() const
   {
     std::cout << "Baa!\n";
+  }
+
+  // return success/error
+  bool shear()
+  {
+    if ( m_is_woolly ) {
+      m_is_woolly = false;
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  void wait_for_wool_to_grow()
+  {
+    m_is_woolly = true;
   }
 
   bool can_eat(std::string_view food) const
