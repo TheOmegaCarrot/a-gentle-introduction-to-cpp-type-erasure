@@ -42,3 +42,5 @@ We just need to add a few things to make this work:
 - A class that can handle managing all of the `new`ed pointers, including deleting them
 - A templated constructor and assignment operator to assign animals to the type erased class
 
+These examples are getting long, so the `Animal` type erasure class is in `Animal.hpp`, all of the different types of animals are in `zoo.hpp`.
+`wrapped.cpp` has a little demo of `Animal`, and you can try to compile `error.cpp` to see what kind of compiler errors you get if you try to assign to an `Animal` with something that doesn't implement the right member functions.
