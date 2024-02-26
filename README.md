@@ -2,7 +2,7 @@
 
 This is intended to serve as an accessible introduction to implementing type erasure in C++.
 
-Existing familiarity with modern C++ is assumed, such as classes, polymorphism, and templates.
+Some familiarity with modern C++ is assumed, such as classes, polymorphism, and templates, but I have tried to keep this very approachable.
 
 ---
 
