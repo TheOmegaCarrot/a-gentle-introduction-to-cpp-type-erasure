@@ -1,6 +1,7 @@
 # A Gentle Introduction to C++ Type Erasure
 
 This is intended to serve as an accessible introduction to implementing type erasure in C++.
+
 Existing familiarity with modern C++ is assumed, such as classes, polymorphism, and templates.
 
 ---
@@ -37,7 +38,7 @@ cmake --build build --parallel 4 # or however many cores your CPU has, but these
 The executables for each example will automatically be placed in the same directory as the example `.cpp` file they were compiled from.
 
 If you do not have `cmake` installed, then there is an alternative.
-These examples do not require any special compiler options, so you can also simply invoke your compiler directly:
+These examples do not require any special compiler options, so you can simply invoke your compiler directly:
 
 ```
 g++ example.cpp -o example
