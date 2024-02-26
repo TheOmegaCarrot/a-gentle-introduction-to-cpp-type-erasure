@@ -4,6 +4,9 @@ This is intended to serve as an accessible introduction to implementing type era
 
 Some familiarity with modern C++ is assumed, such as classes, polymorphism, and templates, but I have tried to keep this very approachable.
 
+This is my first such course, and I would like to create more in the future.
+I welcome any feedback, as I would like for this and my future works to the best they can be.
+
 ---
 
 # How Does This Course Work?
